@@ -1,4 +1,6 @@
-const BlogList = ({blogs,title,handleDelete}) => {  // destructuring directly
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
+
+const BlogList = ({blogs,title}) => {  // destructuring directly
     // const blogs = props.blogs;
     // const title = props.title;
 
@@ -8,12 +10,13 @@ const BlogList = ({blogs,title,handleDelete}) => {  // destructuring directly
         <h2> {title}</h2>
      {blogs.map((blog) => {
       return<div className="blog-preview" key={blog.id}>
+          <Link to = {`/blogs/${blog.id}`}>
             <h2>{blog.title}</h2>
             <p>Written by {blog.author}</p>
-            <button onClick={() => handleDelete(blog.id)}>Delete blog</button>
+            </Link>
         </div>
       })}
-        </div>
+       </div>
     );
 }
  
